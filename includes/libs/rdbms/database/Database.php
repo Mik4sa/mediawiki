@@ -3918,7 +3918,7 @@ abstract class Database implements IDatabase, IMaintainableDatabase, LoggerAware
 	}
 
 	public function affectedRows() {
-		return ( $this->affectedRowCount === null )
+		return ( $this->affectedRowCount === null || $this->affectedRowCount === -1 )
 			? $this->fetchAffectedRowCount() // default to driver value
 			: $this->affectedRowCount;
 	}
