@@ -72,7 +72,7 @@ class DatabaseMssql extends Database {
 
 	public function __construct( array $params ) {
 		$this->serverPort = $params['port'];
-		$this->useWindowsAuth = $params['UseWindowsAuth'];
+		$this->useWindowsAuth = $params['useWindowsAuth'];
 
 		parent::__construct( $params );
 	}
