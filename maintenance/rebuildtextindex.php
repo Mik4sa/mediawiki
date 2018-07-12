@@ -107,6 +107,9 @@ class RebuildTextIndex extends Maintenance {
 			);
 
 			foreach ( $res as $s ) {
+				if ($s->page_id === 0)
+					continue;
+				
 				$title = Title::makeTitle( $s->page_namespace, $s->page_title );
 				try {
 					$rev = new Revision( $s );
