@@ -18,4 +18,5 @@ EXEC sp_executesql @sql;--
 
 ALTER TABLE /*_*/archive DROP COLUMN ar_text;
 ALTER TABLE /*_*/archive DROP COLUMN ar_flags;
-ALTER TABLE /*_*/archive ALTER COLUMN ar_text_id INT NOT NULL CONSTRAINT DF_ar_text_id DEFAULT 0;
+ALTER TABLE /*_*/archive ADD CONSTRAINT DF_ar_text_id DEFAULT 0 FOR ar_text_id;
+ALTER TABLE /*_*/archive ALTER COLUMN ar_text_id INT NOT NULL;

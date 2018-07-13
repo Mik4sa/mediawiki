@@ -101,6 +101,8 @@ class MssqlUpdater extends DatabaseUpdater {
 			[ 'addField', 'externallinks', 'el_index_60', 'patch-externallinks-el_index_60.sql' ],
 			[ 'dropIndex', 'oldimage', 'oi_name_archive_name',
 				'patch-alter-table-oldimage.sql' ],
+			[ 'addField', 'user_groups', 'ug_expiry', 'patch-user_groups-ug_expiry.sql' ],
+			[ 'addIndex', 'image', 'img_user_timestamp', 'patch-image-user-index-2.sql' ],
 
 			// 1.30
 			[ 'modifyField', 'image', 'img_media_type', 'patch-add-3d.sql' ],
@@ -114,11 +116,11 @@ class MssqlUpdater extends DatabaseUpdater {
 			[ 'migrateComments' ],
 
 			// 1.31
-			[ 'addTable', 'slots', 'patch-slots.sql' ],
-			[ 'addField', 'slots', 'slot_origin', 'patch-slot-origin.sql' ],
+			[ 'addTable', 'content_models', 'patch-content_models.sql' ],
 			[ 'addTable', 'content', 'patch-content.sql' ],
 			[ 'addTable', 'slot_roles', 'patch-slot_roles.sql' ],
-			[ 'addTable', 'content_models', 'patch-content_models.sql' ],
+			[ 'addTable', 'slots', 'patch-slots.sql' ],
+			[ 'addField', 'slots', 'slot_origin', 'patch-slot-origin.sql' ],
 			[ 'migrateArchiveText' ],
 			[ 'addTable', 'actor', 'patch-actor-table.sql' ],
 			[ 'migrateActors' ],

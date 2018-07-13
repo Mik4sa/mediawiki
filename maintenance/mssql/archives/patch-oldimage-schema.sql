@@ -3,8 +3,8 @@
 -- remove the -- from the end of each statement.
 
 DECLARE @temp table (
-	oi_name varbinary(255),
-	oi_archive_name varbinary(255),
+	oi_name nvarchar(255),
+	oi_archive_name nvarchar(255),
 	oi_size int,
 	oi_width int,
 	oi_height int,
