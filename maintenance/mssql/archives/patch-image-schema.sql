@@ -3,7 +3,7 @@
 -- remove the -- from the end of each statement.
 
 DECLARE @temp table (
-	img_name varbinary(255),
+	img_name nvarchar(255),
 	img_size int,
 	img_width int,
 	img_height int,

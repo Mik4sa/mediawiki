@@ -52,11 +52,6 @@ SET @SQL = @base + @id;--
 
 EXEC sp_executesql @SQL;--
 
--- while we're at it, let's fix up the other foreign key constraints on recentchanges
--- as future patches touch constraints on other tables, they'll take the time to update constraint names there as well
-ALTER TABLE /*_*/recentchanges DROP CONSTRAINT FK_rc_logid_log_id;--
-ALTER TABLE /*_*/recentchanges ADD CONSTRAINT rc_logid__log_id__fk FOREIGN KEY (rc_logid) REFERENCES /*_*/logging(log_id) ON DELETE CASCADE;--
-
 SELECT @id = fk.name
 FROM sys.foreign_keys fk
 JOIN sys.foreign_key_columns fkc
