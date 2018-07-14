@@ -175,15 +175,9 @@ class SearchMssql extends SearchDatabase {
 	 * @return bool|ResultWrapper
 	 */
 	function update( $id, $title, $text ) {
-		// We store the column data as UTF-8 byte order marked binary stream
-		// because we are invoking the plain text IFilter on it so that, and we want it
-		// to properly decode the stream as UTF-8.  SQL doesn't support UTF8 as a data type
-		// but the indexer will correctly handle it by this method.  Since all we are doing
-		// is passing this data to the indexer and never retrieving it via PHP, this will save space
 		$table = $this->db->tableName( 'searchindex' );
-		$utf8bom = '0xEFBBBF';
-		$si_title = $utf8bom . bin2hex( $title );
-		$si_text = $utf8bom . bin2hex( $text );
+		$si_title = "N'" . $title . "'";
+		$si_text = "N'" . $text . "'";
 		$sql = "DELETE FROM $table WHERE si_page = $id;";
 		$sql .= "INSERT INTO $table (si_page, si_title, si_text) VALUES ($id, $si_title, $si_text)";
 		return $this->db->query( $sql, 'SearchMssql::update' );
@@ -200,9 +194,7 @@ class SearchMssql extends SearchDatabase {
 	function updateTitle( $id, $title ) {
 		$table = $this->db->tableName( 'searchindex' );
 
-		// see update for why we are using the utf8bom
-		$utf8bom = '0xEFBBBF';
-		$si_title = $utf8bom . bin2hex( $title );
+		$si_title = "N'" . $title . "'";
 		$sql = "DELETE FROM $table WHERE si_page = $id;";
 		$sql .= "INSERT INTO $table (si_page, si_title, si_text) VALUES ($id, $si_title, 0x00)";
 		return $this->db->query( $sql, 'SearchMssql::updateTitle' );
