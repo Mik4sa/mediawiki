@@ -62,7 +62,7 @@ class NewFilesPager extends RangeChronologicalPager {
 		$conds = [];
 		$imgQuery = LocalFile::getQueryInfo();
 		$tables = $imgQuery['tables'];
-		$fields = [ 'img_name', 'img_timestamp' ] + $imgQuery['fields'];
+		$fields = [ 'img_name' ] + $imgQuery['fields'];
 		$options = [];
 		$jconds = $imgQuery['joins'];
 
