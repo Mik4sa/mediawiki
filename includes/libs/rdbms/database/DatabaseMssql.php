@@ -1280,6 +1280,10 @@ class DatabaseMssql extends Database {
 		return 'SUBSTRING(' . implode( ',', [ $input, $startPosition, $length ] ) . ')';
 	}
 
+	public function buildStringCast( $field ) {
+		return 'CAST ( ' . $field . ' AS VARCHAR )';
+	}
+	
 	/**
 	 * Returns an associative array for fields that are of type varbinary, binary, or image
 	 * $table can be either a raw table name or passed through tableName() first
