@@ -165,7 +165,7 @@ CREATE TABLE /*_*/page (
    page_namespace INT          NOT NULL,
    page_title     NVARCHAR(255)  NOT NULL,
    page_restrictions NVARCHAR(255) NOT NULL,
-   page_is_redirect BIT           NOT NULL DEFAULT 0,
+   page_is_redirect TINYINT           NOT NULL DEFAULT 0,
    page_is_new BIT                NOT NULL DEFAULT 0,
    page_random real     NOT NULL DEFAULT RAND(),
    page_touched varchar(14) NOT NULL default '',

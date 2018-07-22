@@ -130,6 +130,7 @@ class MssqlUpdater extends DatabaseUpdater {
 			[ 'modifyField', 'recentchanges', 'rc_patrolled', 'patch-rc_patrolled_type.sql' ],
 			[ 'addIndex', 'recentchanges', 'rc_namespace_title_timestamp',
 				'patch-recentchanges-nttindex.sql' ],
+			[ 'modifyField', 'page', 'page_is_redirect', 'patch-page_page_is_redirect.sql' ],
 		];
 	}
 
